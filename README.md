@@ -1,1 +1,1 @@
-# spring-boot-react-crud
+# spring-boot-vue-crud
