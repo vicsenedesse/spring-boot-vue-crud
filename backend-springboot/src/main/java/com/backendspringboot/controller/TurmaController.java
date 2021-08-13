@@ -32,7 +32,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api/turma") @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/turma") @CrossOrigin(origins = "http://localhost:8080/")
 public class TurmaController {
 
     private final TurmaRepository turmaRepository;
@@ -43,7 +43,7 @@ public class TurmaController {
         this.turmaCustomRepository = turmaCustomRepository;
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:8080/")
     @GetMapping("/") 
     public List<TurmaRs> findAll() {
         var turmas = turmaRepository.findAll();
@@ -53,14 +53,14 @@ public class TurmaController {
                 .collect(Collectors.toList());
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:8080/")
     @GetMapping("/{turma_id}") 
     public TurmaRs findByTurmaId(@PathVariable("turma_id") Long turma_id) {
         var turma = turmaRepository.getOne(turma_id);
         return TurmaRs.converter(turma);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:8080/")
     @PostMapping("/") 
     public ResponseEntity<?> savePerson(@RequestBody TurmaRq turma) {
         var a = new Turma();
@@ -74,7 +74,7 @@ public class TurmaController {
         return ResponseEntity.ok("Sucesso!");
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:8080/")
     @PutMapping("/{turma_id}") 
     public void updatePerson(@PathVariable("turma_id") Long turma_id, @RequestBody TurmaRq turma) throws Exception {
         var a = turmaRepository.findById(turma_id);
@@ -92,7 +92,7 @@ public class TurmaController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:8080/")
     @GetMapping("/filter") 
     public List<TurmaRs> findTurmaByName(@RequestParam("nome") String nome) {
         return this.turmaRepository.findByNameContains(nome)
@@ -101,13 +101,13 @@ public class TurmaController {
                 .collect(Collectors.toList());
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:8080/")
     @GetMapping("/filter/custom") 
     public List<TurmaRs> findTurmaByCustom(
-            @RequestParam(value = "quant_vagas", required = false) Long quant_vagas,
+            @RequestParam(value = "qnt_vagas", required = false) Long qnt_vagas,
             @RequestParam(value = "horario", required = false) String horario
     ) {
-        return this.turmaCustomRepository.find(quant_vagas, horario)
+        return this.turmaCustomRepository.find(qnt_vagas, horario)
                 .stream()
                 .map(TurmaRs::converter)
                 .collect(Collectors.toList());

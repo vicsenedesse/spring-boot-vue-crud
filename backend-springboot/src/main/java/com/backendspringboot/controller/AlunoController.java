@@ -33,7 +33,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api/aluno") @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/aluno") @CrossOrigin(origins = "http://localhost:8080/")
 public class AlunoController {
 
     private final AlunoRepository alunoRepository;
@@ -44,7 +44,7 @@ public class AlunoController {
         this.alunoCustomRepository = alunoCustomRepository;
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:8080/")
     @GetMapping("/") 
     public List<AlunoRs> findAll() {
         var alunos = alunoRepository.findAll();
@@ -54,14 +54,14 @@ public class AlunoController {
                 .collect(Collectors.toList());
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:8080/")
     @GetMapping("/{aluno_id}") 
     public AlunoRs findByAlunoId(@PathVariable("aluno_id") Long aluno_id) {
         var aluno = alunoRepository.getOne(aluno_id);
         return AlunoRs.converter(aluno);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:8080/")
     @PostMapping("/") 
     public ResponseEntity<?> savePerson(@RequestBody AlunoRq aluno) {
         var a = new Aluno();
@@ -77,7 +77,7 @@ public class AlunoController {
 
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:8080/")
     @PutMapping("/{aluno_id}") 
     public void updatePerson(@PathVariable("aluno_id") Long aluno_id, @RequestBody AlunoRq aluno) throws Exception {
         var a = alunoRepository.findById(aluno_id);
@@ -95,7 +95,7 @@ public class AlunoController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:8080/")
     @GetMapping("/filter") 
     public List<AlunoRs> findAlunoByName(@RequestParam("nome") String nome) {
         return this.alunoRepository.findByNameContains(nome)
@@ -104,7 +104,7 @@ public class AlunoController {
                 .collect(Collectors.toList());
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:8080/")
     @GetMapping("/filter/custom") 
     public List<AlunoRs> findAlunoByCustom(
             @RequestParam(value = "idade", required = false) Long idade,

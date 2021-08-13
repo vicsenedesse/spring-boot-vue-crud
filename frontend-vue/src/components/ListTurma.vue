@@ -2,7 +2,7 @@
   <div class="list row">
     <div class="col-md-8">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Procurar por Nome, Idade ou Sexo"
+        <input type="text" class="form-control" placeholder="Procurar por Nome, Horário ou Quantidade de Vagas"
           v-model="title"/>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button"
@@ -14,79 +14,73 @@
       </div>
     </div>
     <div class="col-md-6">
-      <h4>Listagem de Alunos</h4>
+      <h4>Turmas List</h4>
       <ul class="list-group">
         <li class="list-group-item"
           :class="{ active: index == currentIndex }"
-          v-for="(aluno, index) in alunos"
+          v-for="(turma, index) in turmas"
           :key="index"
-          @click="setActiveAluno(aluno, index)"
+          @click="setActiveTurma(turma, index)"
         >
-          {{ aluno.nome }}
+          {{ turma.nome }}
         </li>
       </ul>
 
-      <button class="m-3 btn btn-sm btn-danger" @click="removeAllAlunos">
-        Remover Todos
+      <button class="m-3 btn btn-sm btn-danger" @click="removeAllTurmas">
+        Remove All
       </button>
     </div>
     <div class="col-md-6">
-      <div v-if="currentAluno">
-        <h4>Aluno</h4>
+      <div v-if="currentTurma">
+        <h4>Turma</h4>
         <div>
-          <label><strong>Nome:</strong></label> {{ currentAluno.nome }}
+          <label><strong>Nome:</strong></label> {{ currentTurma.nome }}
         </div>
         <div>
-          <label><strong>Data de Nascimento:</strong></label> {{ currentAluno.nascimento }}
+          <label><strong>Horário:</strong></label> {{ currentTurma.horario }}
         </div>
         <div>
-          <label><strong>Idade:</strong></label> {{ currentAluno.idade }}
+          <label><strong>Quantidade Vagas:</strong></label> {{ currentTurma.qnt_vagas }}
         </div>
         <div>
-          <label><strong>Email:</strong></label> {{ currentAluno.email }}
+          <label><strong>Data Início:</strong></label> {{ currentTurma.data_inicio }}
         </div>
         <div>
-          <label><strong>Telefone:</strong></label> {{ currentAluno.telefone }}
-        </div>
-        <div>
-          <label><strong>Sexo:</strong></label> {{ currentAluno.sexo }}
-        </div>
-        <div>
-          <label><strong>Status:</strong></label> {{ currentAluno.published ? "Published" : "Pending" }}
+          <label><strong>Status:</strong></label> {{ currentTurma.published ? "Published" : "Pending" }}
         </div>
 
         <a class="badge badge-warning"
-          :href="'/aluno/' + currentAluno.aluno_id"
+          :href="'/turma/' + currentTurma.turma_id"
         >
           Edit
         </a>
       </div>
       <div v-else>
         <br />
-        <p>Clique em um Aluno...</p>
+        <p>Clique na Turma...</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import AlunoDataService from "../services/AlunoDataService";
+import TurmaDataService from "../services/TurmaDataService";
 
 export default {
-  name: "aluno-list",
+  name: "turma-list",
   data() {
     return {
-      alunos: [],
-      currentAluno: null,
+      turmas: [],
+      currentTurma: null,
       currentIndex: -1,
       title: ""
     };
   },
   methods: {
-    retrieveAlunos() {
-      AlunoDataService.getAll()
+    retrieveTurmas() {
+      TurmaDataService.getAll()
         .then(response => {
-          this.alunos = response.data;
+          this.turmas = response.data;
           console.log(response.data);
         })
         .catch(e => {
@@ -95,18 +89,18 @@ export default {
     },
 
     refreshList() {
-      this.retrieveAlunos();
-      this.currentAluno = null;
+      this.retrieveTurmas();
+      this.currentTurma = null;
       this.currentIndex = -1;
     },
 
-    setActiveAluno(aluno, index) {
-      this.currentAluno = aluno;
+    setActiveTurma(turma, index) {
+      this.currentTurma = turma;
       this.currentIndex = index;
     },
 
-    removeAllAlunos() {
-      AlunoDataService.deleteAll()
+    removeAllTurmas() {
+      TurmaDataService.deleteAll()
         .then(response => {
           console.log(response.data);
           this.refreshList();
@@ -117,9 +111,9 @@ export default {
     },
     
     searchTitle() {
-      AlunoDataService.findByTitle(this.title)
+      TurmaDataService.findByTitle(this.title)
         .then(response => {
-          this.alunos = response.data;
+          this.turmas = response.data;
           console.log(response.data);
         })
         .catch(e => {
@@ -128,7 +122,7 @@ export default {
     }
   },
   mounted() {
-    this.retrieveAlunos();
+    this.retrieveTurmas();
   }
 };
 </script>

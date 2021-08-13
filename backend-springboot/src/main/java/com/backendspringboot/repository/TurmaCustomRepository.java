@@ -16,13 +16,13 @@ public class TurmaCustomRepository {
         this.em = em;
     }
 
-    public List<Turma> find(Long quant_vagas, String horario) {
+    public List<Turma> find(Long qnt_vagas, String horario) {
 
         String query = "select P from Turma as P ";
         String condicao = "where";
 
-        if(quant_vagas != null) {
-            query += condicao + " P.quant_vagas = :quant_vagas";
+        if(qnt_vagas != null) {
+            query += condicao + " P.qnt_vagas = :qnt_vagas";
             condicao = " and ";
         }
 
@@ -33,8 +33,8 @@ public class TurmaCustomRepository {
 
         var q = em.createQuery(query, Turma.class);
 
-        if(quant_vagas != null) {
-            q.setParameter("quant_vagas", quant_vagas);
+        if(qnt_vagas != null) {
+            q.setParameter("qnt_vagas", qnt_vagas);
         }
 
         if(horario != null) {

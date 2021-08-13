@@ -36,7 +36,11 @@ public class Turma{
    @Column(name = "qnt_vagas")
    private Long qnt_vagas;
 
-
+   @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "alunoTurma", 
+      joinColumns = @JoinColumn(name = "aluno_id", referencedColumnName = "aluno_id"), 
+      inverseJoinColumns = @JoinColumn(name = "turma_id", 
+      referencedColumnName = "turma_id"))
    private List<Aluno> alunos;
 
 

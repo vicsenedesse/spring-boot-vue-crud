@@ -36,23 +36,10 @@ public class Aluno{
    @Column(name = "sexo")
    private String sexo;
 
-   // @OneToOne(cascade = CascadeType.ALL)
-   //  @JoinTable(name = "emp_workstation", 
-   //    joinColumns = 
-   //      { @JoinColumn(name = "employee_id", referencedColumnName = "id") },
-   //    inverseJoinColumns = 
-   //      { @JoinColumn(name = "workstation_id", referencedColumnName = "id") })
-  
-   // @ManyToOne(cascade = CascadeType.ALL)
-   // @JoinTable(name="tutor")
-   // @JoinColumn(name = "tutor_id")
-   
+   @ManyToMany(mappedBy = "alunos")
    private List<Turma> turmas;
 
 
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "turma_id")
-//    private Turma turmas;
 
 
 
