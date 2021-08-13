@@ -2,7 +2,7 @@
   <div class="list row">
     <div class="col-md-8">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Procurar por Nome, Horário ou Quantidade de Vagas"
+        <input type="text" class="form-control" placeholder="Buscar por Nome"
           v-model="title"/>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button"
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="col-md-6">
-      <h4>Turmas List</h4>
+      <h4>Listagem</h4>
       <ul class="list-group">
         <li class="list-group-item"
           :class="{ active: index == currentIndex }"
@@ -27,7 +27,7 @@
       </ul>
 
       <button class="m-3 btn btn-sm btn-danger" @click="removeAllTurmas">
-        Remove All
+        Remover Todos
       </button>
     </div>
     <div class="col-md-6">
@@ -45,19 +45,20 @@
         <div>
           <label><strong>Data Início:</strong></label> {{ currentTurma.data_inicio }}
         </div>
-        <div>
-          <label><strong>Status:</strong></label> {{ currentTurma.published ? "Published" : "Pending" }}
-        </div>
+          <label><strong>Alunos:</strong></label> 
+          <div v-for="(i) in currentTurma['alunos']" :key="i">
+            Nome: {{i.nome}}, {{i.idade}}
+          </div>
 
-        <a class="badge badge-warning"
-          :href="'/turma/' + currentTurma.turma_id"
+        <a class="btn btn-sm btn-success" style="margin-top:20px"
+          :href=" '/turma/'+ currentTurma.id"
         >
-          Edit
+          Editar
         </a>
       </div>
       <div v-else>
         <br />
-        <p>Clique na Turma...</p>
+        <p>Clique em uma Turma...</p>
       </div>
     </div>
   </div>
@@ -71,6 +72,7 @@ export default {
   data() {
     return {
       turmas: [],
+      alunos: [],
       currentTurma: null,
       currentIndex: -1,
       title: ""
@@ -119,7 +121,8 @@ export default {
         .catch(e => {
           console.log(e);
         });
-    }
+    },
+
   },
   mounted() {
     this.retrieveTurmas();

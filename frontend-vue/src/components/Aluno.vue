@@ -3,46 +3,61 @@
     <h4>Aluno</h4>
     <form>
       <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title"
-          v-model="currentAluno.title"
-        />
-      </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input type="text" class="form-control" id="description"
-          v-model="currentAluno.description"
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" id="nome"
+          v-model="currentAluno.nome"
         />
       </div>
 
       <div class="form-group">
-        <label><strong>Status:</strong></label>
-        {{ currentAluno.published ? "Published" : "Pending" }}
+        <label for="idade">Idade</label>
+        <input type="text" class="form-control" id="idade"
+          v-model="currentAluno.idade"
+        />
       </div>
+
+      <div class="form-group">
+        <label for="nascimento">Data de Nascimento</label>
+        <input type="text" class="form-control" id="nascimento"
+          v-model="currentAluno.nascimento"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="sexo">Sexo</label>
+        <input type="text" class="form-control" id="sexo"
+          v-model="currentAluno.sexo"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="telefone">Telefone</label>
+        <input type="text" class="form-control" id="telefone"
+          v-model="currentAluno.telefone"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email"
+          v-model="currentAluno.email"
+        />
+      </div>
+
     </form>
 
-    <button class="badge badge-primary mr-2"
-      v-if="currentAluno.published"
-      @click="updatePublished(false)"
-    >
-      UnPublish
-    </button>
-    <button v-else class="badge badge-primary mr-2"
-      @click="updatePublished(true)"
-    >
-      Publish
-    </button>
+    
 
-    <button class="badge badge-danger mr-2"
+    <button class="btn btn-danger mr-2" style="margin-top:15px; margin-right:10px"
       @click="deleteAluno"
     >
-      Delete
+      Deletar
     </button>
 
-    <button type="submit" class="badge badge-success"
+    <button type="submit" class="btn btn-success" style="margin-top:15px"
       @click="updateAluno"
     >
-      Update
+      Editar
     </button>
     <p>{{ message }}</p>
   </div>
@@ -69,24 +84,6 @@ export default {
       AlunoDataService.get(id)
         .then(response => {
           this.currentAluno = response.data;
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    },
-
-    updatePublished(status) {
-      var data = {
-        id: this.currentAluno.id,
-        title: this.currentAluno.title,
-        description: this.currentAluno.description,
-        published: status
-      };
-
-      AlunoDataService.update(this.currentAluno.id, data)
-        .then(response => {
-          this.currentAluno.published = status;
           console.log(response.data);
         })
         .catch(e => {

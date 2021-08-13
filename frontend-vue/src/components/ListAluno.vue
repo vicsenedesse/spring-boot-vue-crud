@@ -2,7 +2,7 @@
   <div class="list row">
     <div class="col-md-8">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Procurar por Nome, Idade ou Sexo"
+        <input type="text" class="form-control" placeholder="Buscar por Nome"
           v-model="title"/>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button"
@@ -51,14 +51,11 @@
         <div>
           <label><strong>Sexo:</strong></label> {{ currentAluno.sexo }}
         </div>
-        <div>
-          <label><strong>Status:</strong></label> {{ currentAluno.published ? "Published" : "Pending" }}
-        </div>
 
-        <a class="badge badge-warning"
-          :href="'/aluno/' + currentAluno.aluno_id"
+        <a class="btn btn-sm btn-success" style="margin-top:20px"
+          :href="'/aluno/' + currentAluno.id"
         >
-          Edit
+          Editar
         </a>
       </div>
       <div v-else>

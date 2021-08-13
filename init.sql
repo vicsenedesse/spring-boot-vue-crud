@@ -55,17 +55,17 @@ VALUES (4,'2021/09/27','Ciências Humanas e Sociais Aplicadas','14:30.0000000',2
 
 
 
-INSERT INTO aluno(aluno_id, nome, nascimento, idade, sexo) 
-VALUES (1,'Avril Lavigne','1984/09/27',36,'F');
+INSERT INTO aluno(aluno_id, nome, nascimento, idade, sexo, telefone, email) 
+VALUES (1,'Avril Lavigne','1984/09/27',36,'F', '(99)99999-9991' ,'email1@gmail.com');
 
-INSERT INTO aluno(aluno_id, nome, nascimento, idade, sexo) 
-VALUES (2,'Hayley Williams','1984/12/27',32,'F');
+INSERT INTO aluno(aluno_id, nome, nascimento, idade, sexo, telefone, email) 
+VALUES (2,'Hayley Williams','1984/12/27',32,'F', '(99)99999-9992' ,'email2@gmail.com');
 
-INSERT INTO aluno(aluno_id, nome, nascimento, idade, sexo) 
-VALUES (3,'Alanis Morrisset','1974/06/01',47,'F');
+INSERT INTO aluno(aluno_id, nome, nascimento, idade, sexo, telefone, email) 
+VALUES (3,'Alanis Morrisset','1974/06/01',47,'F', '(99)99999-9993' ,'email3@gmail.com');
 
-INSERT INTO aluno(aluno_id, nome, nascimento, idade, sexo) 
-VALUES (4,'Lauryn Hill','1975/05/26',46,'F');
+INSERT INTO aluno(aluno_id, nome, nascimento, idade, sexo, telefone, email) 
+VALUES (4,'Lauryn Hill','1975/05/26',46,'F', '(99)99999-9994' ,'email4@gmail.com');
 
 
 

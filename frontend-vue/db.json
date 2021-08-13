@@ -1,0 +1,150 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "api": {},
+  "aluno": [
+    {
+      "id": 1,
+      "nome": "Avril Lavigne",
+      "nascimento": "1984/09/27",
+      "idade": 36,
+      "sexo": "F",
+      "telefone": "(99)99999-9991",
+      "email": "email1@gmail.com"
+    },
+    {
+      "id": 2,
+      "nome": "Hayley Williams",
+      "nascimento": "1984/12/27",
+      "idade": 32,
+      "sexo": "F",
+      "telefone": "(99)99999-9992",
+      "email": "email2@gmail.com"
+    },
+    {
+      "id": 3,
+      "nome": "Alanis Morrisset",
+      "nascimento": "1974/06/01",
+      "idade": 47,
+      "sexo": "F",
+      "telefone": "(99)99999-9993",
+      "email": "email3@gmail.com"
+    },
+    {
+      "id": 4,
+      "nome": "Lauryn Hill",
+      "nascimento": "1975/05/26",
+      "idade": 46,
+      "sexo": "F",
+      "telefone": "(99)99999-9994",
+      "email": "email4@gmail.com"
+    },
+    {
+      "id": 5,
+      "nome": "Dolores O'Riordan",
+      "nascimento": "1971/09/06",
+      "idade": 47,
+      "sexo": "F",
+      "telefone": "(99)99999-9995",
+      "email": "email5@gmail.com"
+    }
+  ],
+  "turma": [
+    {
+      "id": 1,
+      "nome": "Matemáticas e suas Tecnologias",
+      "data_inicio": "2021/09/24",
+      "qnt_vagas": 21,
+      "horario": "14:30.0000000",
+      "alunos": [
+        {
+          "id": 2,
+          "nome": "Hayley Williams",
+          "idade":32
+        },
+        {
+          "id": 3,
+          "nome": "Alanis Morrisset",
+          "idade":47
+        },
+        {
+          "id": 4,
+          "nome": "Lauryn Hill",
+          "idade":46
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Linguagens e suas Tecnologias",
+      "data_inicio": "2021/09/25",
+      "qnt_vagas": 30,
+      "horario": "15:30.0000000",
+      "alunos": [
+        {
+          "id": 1,
+          "nome": "Avril Lavigne",
+          "idade":36
+        },
+        {
+          "id": 2,
+          "nome": "Hayley Williams",
+          "idade":32
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Ciências da Natureza e suas Tecnologias",
+      "data_inicio": "2021/09/26",
+      "qnt_vagas": 40,
+      "horario": "13:30.0000000",
+      "alunos": [
+        {
+          "id": 3,
+          "nome": "Alanis Morrisset",
+          "idade":47
+        },
+        {
+          "id": 5,
+          "nome": "Dolores O'Riordan",
+          "idade":47
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Ciências Humanas e Sociais Aplicadas",
+      "data_inicio": "2021/09/27",
+      "qnt_vagas": 21,
+      "horario": "14:30.0000000",
+      "alunos": [
+        {
+          "id": 1,
+          "nome": "Avril Lavigne",
+          "idade":36
+        },
+        {
+          "id": 5,
+          "nome": "Dolores O'Riordan",
+          "idade":47
+        }
+      ]
+    }
+  ]
+}

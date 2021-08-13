@@ -22,11 +22,11 @@ export default new Router({
       name: "add-aluno",
       component: () => import("./components/AddAluno")
     },
-    {
-      path: "/aluno/:id/turmas",
-      name: "aluno-turmas",
-      component: () => import("./components/Aluno")
-    },
+    // {
+    //   path: "/aluno/:id/turmas",
+    //   name: "aluno-turmas",
+    //   component: () => import("./components/Aluno")
+    // },
 
 
     {
@@ -45,10 +45,10 @@ export default new Router({
       name: "add-turma",
       component: () => import("./components/AddTurma")
     },
-    {
-      path: "/aluno-turma/:id/alunos",
-      name: "turmas-aluno",
-      component: () => import("./components/Turma")
-    },
+    // {
+    //   path: "/aluno-turma/:id/alunos",
+    //   name: "turmas-aluno",
+    //   component: () => import("./components/Turma")
+    // },
   ]
 });

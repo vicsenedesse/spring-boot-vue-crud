@@ -20,9 +20,9 @@ import java.util.Date;
 public class Turma{
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
    @Column(name = "turma_id")
    private Long turma_id;
+
 
    @Column(name = "data_inicio")
    private Date data_inicio;
@@ -38,9 +38,9 @@ public class Turma{
 
    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "alunoTurma", 
-      joinColumns = @JoinColumn(name = "aluno_id", referencedColumnName = "aluno_id"), 
-      inverseJoinColumns = @JoinColumn(name = "turma_id", 
-      referencedColumnName = "turma_id"))
+      joinColumns = @JoinColumn(name = "turma_id", referencedColumnName = "turma_id"), 
+      inverseJoinColumns = @JoinColumn(name = "aluno_id", 
+      referencedColumnName = "aluno_id"))
    private List<Aluno> alunos;
 
 

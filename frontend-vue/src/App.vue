@@ -11,7 +11,7 @@
         </li>
 
         <li class="nav-item">
-          <router-link to="/turma" class="nav-link" style="margin-right: 30px;">Turma</router-link>
+          <router-link to="/turma" class="nav-link" style="margin-right: 30px;">Turmas</router-link>
         </li>
 
         <li class="nav-item">

@@ -3,43 +3,52 @@
     <h4>Turma</h4>
     <form>
       <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title"
-          v-model="currentTurma.title"
-        />
-      </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input type="text" class="form-control" id="description"
-          v-model="currentTurma.description"
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" id="nome"
+          v-model="currentTurma.nome"
         />
       </div>
 
       <div class="form-group">
-        <label><strong>Status:</strong></label>
-        {{ currentTurma.published ? "Published" : "Pending" }}
+        <label for="horario">Horário</label>
+        <input type="text" class="form-control" id="horario"
+          v-model="currentTurma.horario"
+        />
       </div>
+
+      <div class="form-group">
+        <label for="qnt_vagas">Quantidade de Vagas</label>
+        <input type="text" class="form-control" id="qnt_vagas"
+          v-model="currentTurma.qnt_vagas"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="data_inicio">Data de Início</label>
+        <input type="text" class="form-control" id="data_inicio"
+          v-model="currentTurma.data_inicio"
+        />
+      </div>
+
+
+      <!-- <div class="form-group">
+        <label for="alunos">Alunos</label>
+        <input type="text" class="form-control" id="alunos"
+          v-model="currentTurma.alunos"
+        />
+      </div> -->
+
+      
     </form>
 
-    <button class="badge badge-primary mr-2"
-      v-if="currentTurma.published"
-      @click="updatePublished(false)"
-    >
-      UnPublish
-    </button>
-    <button v-else class="badge badge-primary mr-2"
-      @click="updatePublished(true)"
-    >
-      Publish
-    </button>
-
-    <button class="badge badge-danger mr-2"
+   
+    <button class="btn btn-danger mr-2" style="margin-top:15px; margin-right:10px"
       @click="deleteTurma"
     >
       Delete
     </button>
 
-    <button type="submit" class="badge badge-success"
+    <button type="submit" class="btn btn-success" style="margin-top:15px"
       @click="updateTurma"
     >
       Update
@@ -49,7 +58,7 @@
 
   <div v-else>
     <br />
-    <p>Please click on a Turma...</p>
+    <p>Clique em uma Turma...</p>
   </div>
 </template>
 
@@ -76,23 +85,7 @@ export default {
         });
     },
 
-    updatePublished(status) {
-      var data = {
-        id: this.currentTurma.id,
-        title: this.currentTurma.title,
-        description: this.currentTurma.description,
-        published: status
-      };
-
-      TurmaDataService.update(this.currentTurma.id, data)
-        .then(response => {
-          this.currentTurma.published = status;
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    },
+    
 
     updateTurma() {
       TurmaDataService.update(this.currentTurma.id, this.currentTurma)
