@@ -23,6 +23,8 @@ CREATE TABLE aluno (
   nascimento DATE NOT NULL,
   idade INT NOT NULL,
   sexo VARCHAR(1) NOT NULL,
+  telefone VARCHAR(14) NOT NULL,
+  email VARCHAR(50) NOT NULL,
 
   turmas INT,
 
